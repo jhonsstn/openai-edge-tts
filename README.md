@@ -491,6 +491,16 @@ streamTTSWithSSE('Hello from SSE streaming!');
 
 </details>
 
+### Troubleshooting
+
+**`403, message='Invalid response status'` when generating speech**
+
+Microsoft retired the legacy speech synthesis host that `edge-tts` still targets,
+so every released version of the library fails with a 403. The app redirects
+synthesis to the current endpoint at startup (see `app/edge_tts_compat.py`); the
+voice list is unaffected. If the endpoint moves again, set `EDGE_TTS_WSS_URL` in
+your `.env` instead of waiting for an upstream release.
+
 ### Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request for any improvements.
