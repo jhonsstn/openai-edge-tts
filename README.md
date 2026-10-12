@@ -1,10 +1,10 @@
 # OpenAI-Compatible Edge-TTS API 🗣️
 
-![GitHub stars](https://img.shields.io/github/stars/travisvn/openai-edge-tts?style=social)
-![GitHub forks](https://img.shields.io/github/forks/travisvn/openai-edge-tts?style=social)
-![GitHub repo size](https://img.shields.io/github/repo-size/travisvn/openai-edge-tts)
-![GitHub top language](https://img.shields.io/github/languages/top/travisvn/openai-edge-tts)
-![GitHub last commit](https://img.shields.io/github/last-commit/travisvn/openai-edge-tts?color=red)
+![GitHub stars](https://img.shields.io/github/stars/lekyzhang/openai-edge-tts?style=social)
+![GitHub forks](https://img.shields.io/github/forks/lekyzhang/openai-edge-tts?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/lekyzhang/openai-edge-tts)
+![GitHub top language](https://img.shields.io/github/languages/top/lekyzhang/openai-edge-tts)
+![GitHub last commit](https://img.shields.io/github/last-commit/lekyzhang/openai-edge-tts?color=red)
 [![Discord](https://img.shields.io/badge/Discord-Voice_AI_%26_TTS_Tools-blue?logo=discord&logoColor=white)](https://discord.gg/GkFbBCBqJ6)
 [![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/travisvannimwegen)
 
@@ -12,7 +12,7 @@ This project provides a local, OpenAI-compatible text-to-speech (TTS) API using 
 
 `edge-tts` uses Microsoft Edge's online text-to-speech service, so it is completely free.
 
-[View this project on Docker Hub](https://hub.docker.com/r/travisvn/openai-edge-tts)
+[View this project on Docker Hub](https://hub.docker.com/r/lekyzhang/openai-edge-tts)
 
 # Please ⭐️ star this repo if you find it helpful
 
@@ -30,7 +30,7 @@ This project provides a local, OpenAI-compatible text-to-speech (TTS) API using 
 The simplest way to get started without having to configure anything is to run the command below
 
 ```bash
-docker run -d -p 5050:5050 travisvn/openai-edge-tts:latest
+docker run -d -p 5050:5050 lekyzhang/openai-edge-tts:latest
 ```
 
 This will run the service at port 5050 with all the default configs
@@ -50,7 +50,7 @@ _(Docker required, obviously)_
 1. **Clone the Repository**:
 
 ```bash
-git clone https://github.com/travisvn/openai-edge-tts.git
+git clone https://github.com/lekyzhang/openai-edge-tts.git
 cd openai-edge-tts
 ```
 
@@ -117,7 +117,7 @@ This is controlled by the `INSTALL_FFMPEG_ARG` build argument. Set this environm
 This is for local builds. For pre-built Docker Hub images, add the `latest-ffmpeg` tag to the version
 
 ```bash
-docker run -d -p 5050:5050 -e API_KEY=your_api_key_here -e PORT=5050 travisvn/openai-edge-tts:latest-ffmpeg
+docker run -d -p 5050:5050 -e API_KEY=your_api_key_here -e PORT=5050 lekyzhang/openai-edge-tts:latest-ffmpeg
 ```
 
 ---
@@ -151,7 +151,7 @@ If you prefer to run this project directly with Python, follow these steps to se
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/travisvn/openai-edge-tts.git
+git clone https://github.com/lekyzhang/openai-edge-tts.git
 cd openai-edge-tts
 ```
 
@@ -539,7 +539,7 @@ Below, you can see a screenshot of the correct configuration for using this proj
 - The quickest way to get this up and running is to install docker and run the command below:
 
 ```bash
-docker run -d -p 5050:5050 -e API_KEY=your_api_key_here -e PORT=5050 travisvn/openai-edge-tts:latest
+docker run -d -p 5050:5050 -e API_KEY=your_api_key_here -e PORT=5050 lekyzhang/openai-edge-tts:latest
 ```
 
 ---

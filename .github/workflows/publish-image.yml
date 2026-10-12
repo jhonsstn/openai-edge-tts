@@ -1,0 +1,64 @@
+name: Publish Docker image
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+env:
+  IMAGE: lekyzhang/openai-edge-tts
+
+concurrency:
+  group: publish-image
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # Two published variants, matching the tags the README references
+        include:
+          - flavor: ""
+            install_ffmpeg: "false"
+          - flavor: "-ffmpeg"
+            install_ffmpeg: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve version tag
+        id: version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          if [ -n "$RELEASE_TAG" ]; then
+            echo "tag=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=sha-$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: docker/setup-qemu-action@v3
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          # Single-arch builds would break on the other machine family
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            INSTALL_FFMPEG=${{ matrix.install_ffmpeg }}
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:latest${{ matrix.flavor }}
+            ${{ env.IMAGE }}:${{ steps.version.outputs.tag }}${{ matrix.flavor }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
