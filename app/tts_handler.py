@@ -9,6 +9,11 @@ from pathlib import Path
 
 from utils import DETAILED_ERROR_LOGGING
 from config import DEFAULT_CONFIGS
+import edge_tts_compat
+
+# Must run before any Communicate() call: the shipped edge-tts still targets the
+# retired synthesis host, which answers 403
+edge_tts_compat.install()
 
 # Language default (environment variable)
 DEFAULT_LANGUAGE = os.getenv('DEFAULT_LANGUAGE', DEFAULT_CONFIGS["DEFAULT_LANGUAGE"])
