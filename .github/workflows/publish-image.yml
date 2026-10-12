@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE: lekyzhang/openai-edge-tts
+  IMAGE: lekyzhang1/openai-edge-tts
 
 concurrency:
   group: publish-image
