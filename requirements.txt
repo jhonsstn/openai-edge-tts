@@ -1,5 +1,5 @@
 flask
 gevent
 python-dotenv
-edge-tts==7.3.1
+edge-tts>=7.3.1
 emoji
